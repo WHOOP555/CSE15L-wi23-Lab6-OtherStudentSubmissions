@@ -24,7 +24,7 @@ class ListExamples {
   static List<String> merge(List<String> list1, List<String> list2) {
     List<String> result = new ArrayList<>();
     int index1 = 0, index2 = 0;
-    while(index1 < list1.size() || index2 < list2.size()) {
+    while(index1 < list1.size() && index2 < list2.size()) {
       if(list1.get(index1).compareTo(list2.get(index2)) < 0) {
         result.add(list1.get(index1));
         index1 += 1;
@@ -34,21 +34,17 @@ class ListExamples {
         index2 += 1;
       }
     }
-    while(index1 < list1.size()) {
-      result.add(list1.get(index1));
-      index1 += 1;
-    }
-    while(index2 < list2.size()) {
+    while(index1 < list1.size() || index2 < list2.size()) {
+      if (list1.get(index1).compareTo(list2.get(index2)) < 0){
+        result.add(list1.get(index1));
+        index1 += 1;
+      }
+      else {
       result.add(list2.get(index2));
       index2 += 1;
+      }
+      
     }
-    ArrayList<String> x = new ArrayList<>();
-        x.add("a");
-        x.add("a");
-        x.add("b");
-        x.add("c");
-        x.add("d");
-    return x;
     return result;
   }
 
